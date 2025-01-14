@@ -32,6 +32,48 @@ Une API RESTful pour gérer une bibliothèque. Ce projet est développé avec **
 
 ### Étapes
 1. Clonez le projet :
-   ```bash
+```bash
    git clone <url-du-repo>
    cd library-api
+```
+2. Compiler le projet : 
+```bash
+    mvn spring-boot:run
+```
+3. Accédez à l'application à l'adresse :
+
+- ***API REST :*** http://localhost:8080
+- ***Console H2 :*** http://localhost:8080/h2-console
+
+Informations pour la console H2 :
+
+- ***JDBC URL : jdbc:h2:mem:testdb***
+- ***Nom d'utilisateur : sa***
+- ***Mot de passe : (vide)***
+
+Endpoints
+
+Livres
+
+   Méthode   |   Endpoint          |   Description               |
+|---         |:-:    |:-:          |
+|   GET      |   /api/books        |   Récupérer tous les livres |
+|   POST     |  /api/books         |   Ajouter un nouveau livre  |
+|   GET      |   /api/books/{id}   |   Récupérer un livre par ID |
+|   DELETE   |  /api/books/{id}    |   Supprimer un livre par ID |
+
+
+Exemple de requête
+Ajouter un livre
+bash
+```bash
+curl -X POST http://localhost:8080/api/books \
+-H "Content-Type: application/json" \
+-d '{"title": "1984", "author": "George Orwell", "isbn": "9780451524935"}'
+```
+
+Récupérer tous les livres
+bash
+```bash
+curl -X GET http://localhost:8080/api/books
+```
