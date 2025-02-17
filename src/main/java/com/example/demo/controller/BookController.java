@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Book;
-import com.example.demo.repository.BookRepository;
+import com.example.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,15 +12,15 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
 
     @GetMapping
     public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return bookService.getAllBooks();
     }
 
     @PostMapping
     public Book createBook(@RequestBody Book book) {
-        return bookRepository.save(book);
+        return bookService.createBook(book);
     }
 }
